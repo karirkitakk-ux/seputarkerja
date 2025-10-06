@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide for ATS - Membuat CV Ramah ATS & Persiapan Interview</title>
+    <title>KarirKita! - Panduan CV Ramah ATS & Persiapan Interview</title>
     <style>
         :root {
             --dark-blue: #1D2A62;
@@ -392,6 +392,72 @@
             margin-top: 40px;
         }
         
+        /* Homepage Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-top: 5px solid var(--dark-blue);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(29, 42, 98, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        /* About Us Section */
+        .about-us {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: rgba(29, 42, 98, 0.05);
+            border-radius: 12px;
+        }
+        
+        .tiktok-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #000000;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .tiktok-btn:hover {
+            background-color: #333333;
+            transform: translateY(-3px);
+        }
+        
+        .tiktok-icon {
+            font-size: 20px;
+        }
+        
         /* Mobile Styles */
         @media (max-width: 768px) {
             .container {
@@ -492,6 +558,14 @@
                 width: 100%;
                 text-align: center;
             }
+            
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
         }
         
         /* Desktop Styles */
@@ -512,6 +586,10 @@
             .main-cta {
                 min-width: 250px;
             }
+            
+            .feature-cards {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
     </style>
 </head>
@@ -529,10 +607,9 @@
                     <ul>
                         <li><a href="#" data-page="page1">Beranda</a></li>
                         <li><a href="#" data-page="page2">Memahami ATS</a></li>
-                        <li><a href="#" data-page="page3">Cara Kerja ATS</a></li>
-                        <li><a href="#" data-page="page4">Mengapa Penting</a></li>
                         <li><a href="#" data-page="page5">Persiapan Interview</a></li>
-                        <li><a href="#" data-page="page6">Kesimpulan</a></li>
+                        <li><a href="#" data-page="page7">Pekerjaan Unik</a></li>
+                        <li><a href="#" data-page="page8">Tentang Kami</a></li>
                     </ul>
                 </nav>
             </div>
@@ -540,11 +617,11 @@
     </header>
     
     <main>
-        <!-- Page 1: Introduction -->
+        <!-- Page 1: Homepage -->
         <section id="page1" class="page active">
             <div class="container">
-                <h1 class="page-title">Panduan Lengkap: Membuat CV yang Ramah ATS</h1>
-                <p class="page-subtitle">Pelajari cara mengoptimalkan CV Anda agar dapat melewati sistem pelacakan pelamar (ATS) dan meningkatkan peluang Anda untuk mendapatkan panggilan interview.</p>
+                <h1 class="page-title">KarirKita! - Panduan Karir Lengkap</h1>
+                <p class="page-subtitle">Tingkatkan peluang karir Anda dengan panduan CV ramah ATS dan persiapan interview yang efektif</p>
                 
                 <div class="stats-container">
                     <div class="stat-card">
@@ -561,42 +638,36 @@
                     </div>
                 </div>
                 
-                <div class="card">
-                    <h2 class="card-title">Mulai Eksplorasi Panduan</h2>
-                    <div class="card-content">
-                        <p>Pilih fokus panduan yang ingin Anda pelajari terlebih dahulu:</p>
-                        
-                        <div class="main-cta-container">
-                            <a href="#" class="main-cta" data-page="page2">Panduan ATS</a>
-                            <a href="#" class="main-cta secondary" data-page="page5">Persiapan Interview</a>
-                        </div>
-                        
-                        <p style="margin-top: 30px; text-align: center;">Atau lanjutkan untuk mempelajari semua materi secara berurutan</p>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3 class="feature-title">Memahami ATS</h3>
+                        <p>Pelajari cara mengoptimalkan CV Anda agar dapat melewati sistem pelacakan pelamar (ATS) dan meningkatkan peluang Anda untuk mendapatkan panggilan interview.</p>
+                        <a href="#" class="cta-btn" data-page="page2">Pelajari Sekarang</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3 class="feature-title">Persiapan Interview</h3>
+                        <p>Langkah-langkah lengkap untuk mempersiapkan diri menghadapi wawancara kerja, dari riset perusahaan hingga teknik menjawab pertanyaan.</p>
+                        <a href="#" class="cta-btn" data-page="page5">Persiapkan Diri</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h3 class="feature-title">Pekerjaan Unik</h3>
+                        <p>Temukan profesi unik dengan prospek menarik yang mungkin belum pernah Anda pertimbangkan sebelumnya.</p>
+                        <a href="#" class="cta-btn" data-page="page7">Jelajahi Pekerjaan</a>
                     </div>
                 </div>
                 
-                <div class="card">
-                    <h2 class="card-title">Apa yang Akan Dibahas</h2>
-                    <div class="card-content">
-                        <div class="do-dont-container">
-                            <div class="do-section">
-                                <h3 class="section-title">Memahami ATS</h3>
-                                <p>Mempelajari apa itu sistem ATS dan bagaimana cara kerjanya.</p>
-                            </div>
-                            <div class="do-section">
-                                <h3 class="section-title">Prinsip Optimasi</h3>
-                                <p>Kuasai prinsip-prinsip utama dalam membuat CV ramah ATS.</p>
-                            </div>
-                            <div class="do-section">
-                                <h3 class="section-title">Template Praktis</h3>
-                                <p>Gunakan template yang telah terbukti efektif melewati ATS.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="navigation">
-                    <button class="nav-btn" data-next="page2">Selanjutnya →</button>
+                <div class="about-us">
+                    <h2>Tentang KarirKita!</h2>
+                    <p>KarirKita! adalah platform edukasi karir yang membantu para pencari kerja Indonesia meningkatkan peluang mereka di dunia kerja yang kompetitif.</p>
+                    <a href="https://www.tiktok.com/@karirkita.id" class="tiktok-btn" target="_blank">
+                        <span class="tiktok-icon">🔗</span>
+                        Ikuti Kami di TikTok
+                    </a>
                 </div>
             </div>
         </section>
@@ -623,8 +694,8 @@
                         
                         <div class="stats-container">
                             <div class="stat-card">
-                                <div class="stat-number">75%+</div>
-                                <div class="stat-description">CV tidak pernah sampai ke HR karena tersaring ATS</div>
+                                <div class="stat-number">98%</div>
+                                <div class="stat-description">Perusahaan Fortune 500 menggunakan ATS</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-number">6 detik</div>
@@ -636,21 +707,8 @@
                     </div>
                 </div>
                 
-                <div class="navigation">
-                    <button class="nav-btn" data-prev="page1">← Sebelumnya</button>
-                    <button class="nav-btn" data-next="page3">Selanjutnya →</button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Page 3: How ATS Works -->
-        <section id="page3" class="page">
-            <div class="container">
-                <h1 class="page-title">Bagaimana Cara Kerja ATS?</h1>
-                <p class="page-subtitle">Alur Proses dari Sudut Pandang ATS</p>
-                
                 <div class="card">
-                    <h2 class="card-title">Alur Proses Otomatis ATS</h2>
+                    <h2 class="card-title">Bagaimana Cara Kerja ATS?</h2>
                     <div class="card-content">
                         <ol class="tips-list">
                             <li><strong>Upload CV:</strong> Pelamar mengirimkan CV melalui portal karier atau email.</li>
@@ -688,21 +746,8 @@
                     </div>
                 </div>
                 
-                <div class="navigation">
-                    <button class="nav-btn" data-prev="page2">← Sebelumnya</button>
-                    <button class="nav-btn" data-next="page4">Selanjutnya →</button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Page 4: Why It Matters -->
-        <section id="page4" class="page">
-            <div class="container">
-                <h1 class="page-title">Mengapa CV Ramah ATS Begitu Penting?</h1>
-                <p class="page-subtitle">Analisis Dampak dan Implikasi untuk Karier Anda</p>
-                
                 <div class="card">
-                    <h2 class="card-title">Realitas Pasar Kerja Modern</h2>
+                    <h2 class="card-title">Mengapa CV Ramah ATS Begitu Penting?</h2>
                     <div class="card-content">
                         <div class="stats-container">
                             <div class="stat-card">
@@ -714,18 +759,13 @@
                                 <div class="stat-description">CV ditolak sebelum dilihat manusia</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number">6 detik</div>
-                                <div class="stat-description">Waktu rata-rata review CV oleh manusia</div>
+                                <div class="stat-number">7.5 detik</div>
+                                <div class="stat-description">Rata-rata waktu recruiter melihat CV</div>
                             </div>
                         </div>
                         
                         <p>Dalam kompetisi ketat ini, CV yang ramah ATS adalah keharusan untuk unggul.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h2 class="card-title">Dampak Positif CV Ramah ATS</h2>
-                    <div class="card-content">
+                        
                         <div class="stats-container">
                             <div class="stat-card">
                                 <div class="stat-number">3x</div>
@@ -747,9 +787,40 @@
                     </div>
                 </div>
                 
+                <div class="card">
+                    <h2 class="card-title">Kesimpulan</h2>
+                    <div class="card-content">
+                        <p>CV yang sesuai dengan ATS bukan hanya membantu melewati sistem seleksi, tapi juga menyampaikan nilai dan kelebihan Anda secara jelas kepada rekruter. Dengan menerapkan prinsip yang tepat, Anda bisa punya daya saing lebih kuat di pasar kerja yang kini serba digital.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>Kunci Utama:</h3>
+                            <ul class="tips-list">
+                                <li>Pahami cara kerja ATS dan adaptasi CV Anda</li>
+                                <li>Optimalkan kata kunci sesuai dengan job description</li>
+                                <li>Gunakan format yang sederhana dan mudah dipindai</li>
+                                <li>Sesuaikan CV untuk setiap posisi yang dilamar</li>
+                                <li>Pastikan informasi kontak lengkap dan jelas</li>
+                            </ul>
+                        </div>
+                        
+                        <p>Dengan menerapkan panduan ini, Anda akan meningkatkan peluang CV Anda untuk melewati sistem ATS dan sampai ke tangan rekruter yang tepat.</p>
+                        
+                        <div style="text-align: center; margin-top: 40px;">
+                            <a href="#" class="cta-btn" id="cvExampleBtn">Lihat Contoh CV ATS-Friendly</a>
+                        </div>
+
+                        <script>
+                        document.getElementById('cvExampleBtn').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            if(confirm('Anda akan membuka GDocs. Lanjutkan?')) {
+                                window.open('https://docs.google.com/document/d/1bnYEFX74FkPA93Tb5T09OyVQP0-2KemiNpfhqliYHPs/edit?usp=sharing', '_blank');
+                            }
+                        });
+                        </script>
+                
                 <div class="navigation">
-                    <button class="nav-btn" data-prev="page3">← Sebelumnya</button>
-                    <button class="nav-btn" data-next="page5">Selanjutnya →</button>
+                    <button class="nav-btn" data-page="page1">← Kembali ke Beranda</button>
+                    <button class="nav-btn" data-page="page5">Persiapan Interview →</button>
                 </div>
             </div>
         </section>
@@ -886,44 +957,124 @@
                 </div>
                 
                 <div class="navigation">
-                    <button class="nav-btn" data-prev="page4">← Sebelumnya</button>
-                    <button class="nav-btn" data-next="page6">Selanjutnya →</button>
+                    <button class="nav-btn" data-page="page2">← Memahami ATS</button>
+                    <button class="nav-btn" data-page="page1">Kembali ke Beranda</button>
+                    <button class="nav-btn" data-page="page7">Pekerjaan Unik →</button>
                 </div>
             </div>
         </section>
         
-        <!-- Page 6: Conclusion -->
-        <section id="page6" class="page">
+        <!-- Page 7: Unique Career Options -->
+        <section id="page7" class="page">
             <div class="container">
-                <h1 class="page-title">Kesimpulan</h1>
+                <h1 class="page-title">Apakah Kamu Tertarik dengan Beberapa Pekerjaan Ini?</h1>
+                <p class="page-subtitle">Temukan profesi unik dengan prospek menarik yang mungkin belum pernah kamu pertimbangkan sebelumnya</p>
                 
                 <div class="card">
                     <div class="card-content">
-                        <p>CV yang sesuai dengan ATS bukan hanya membantu melewati sistem seleksi, tapi juga menyampaikan nilai dan kelebihan Anda secara jelas kepada rekruter. Dengan menerapkan prinsip yang tepat, Anda bisa punya daya saing lebih kuat di pasar kerja yang kini serba digital.</p>
+                        <p>Seringkali, pekerjaan tidak selalu seperti yang kita bayangkan. Ada beberapa profesi yang mungkin terdahulu dianggap tidak biasa, namun kini memiliki daya tarik unik dan prospek menarik. Mari kita lihat beberapa di antaranya:</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🎬 Movie/TV Extras (Figuran Film/TV)</h2>
+                    <div class="card-content">
+                        <p>Apakah kamu pernah membayangkan berada di balik layar produksi film atau serial televisi? Menjadi figuran adalah kesempatan emas untuk merasakan dunia perfilman dari dekat.</p>
+                        <div class="highlight-box">
+                            <p>Ini bukan sekadar tampil sesaat; kamu akan menjadi bagian dari adegan, berinteraksi dengan kru, dan melihat bagaimana sebuah cerita terwujud. Siapa tahu, jalanmu menuju dunia hiburan mungkin dimulai dari sini!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🐾 Dokter Akupuntur Hewan</h2>
+                    <div class="card-content">
+                        <p>Pernahkah terpikir bahwa hewan peliharaan juga bisa mendapatkan manfaat dari pengobatan alternatif? Dokter akupuntur hewan adalah profesi unik yang menggabungkan kecintaan pada hewan dengan ilmu pengobatan timur.</p>
+                        <div class="highlight-box">
+                            <p>Kamu akan membantu meningkatkan kualitas hidup hewan melalui metode penyembuhan non-tradisional, memberikan solusi bagi masalah kesehatan yang tidak dapat diatasi dengan pengobatan konvensional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🛍️ Mystery Shopper (Pembeli Misterius)</h2>
+                    <div class="card-content">
+                        <p>Kamu suka berbelanja? Bayangkan jika hobi belanjamu bisa menghasilkan uang! Sebagai mystery shopper, tugasmu adalah menyamar sebagai pelanggan biasa untuk mengevaluasi kualitas layanan, produk, atau kebersihan suatu tempat usaha.</p>
+                        <div class="highlight-box">
+                            <p>Kamu akan melaporkan pengalamanmu secara rinci, membantu perusahaan meningkatkan standar mereka. Ini adalah pekerjaan yang cocok bagi mereka yang teliti dan suka mencoba hal-hal baru.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🧪 Fovoris (Ahli Busa)</h2>
+                    <div class="card-content">
+                        <p>Mungkin terdengar aneh, tapi ada profesi yang berfokus pada pengembangan busa! Fovoris adalah ahli yang memahami ilmu di balik gelembung, baik itu untuk minuman bersoda, sabun, atau bahkan produk industri.</p>
+                        <div class="highlight-box">
+                            <p>Kamu akan bereksperimen dengan berbagai bahan kimia dan teknologi untuk menciptakan formulasi busa yang sempurna, membuka inovasi baru dalam berbagai bidang.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🎨 Color Expert (Pakar Warna)</h2>
+                    <div class="card-content">
+                        <p>Warna memengaruhi suasana hati dan persepsi kita. Seorang pakar warna memiliki pemahaman mendalam tentang teori warna, psikologi warna, dan tren.</p>
+                        <div class="highlight-box">
+                            <p>Kamu akan membantu individu atau perusahaan memilih palet warna yang tepat untuk desain interior, branding, atau produk. Ini adalah profesi yang menggabungkan seni dan ilmu pengetahuan untuk menciptakan visual yang harmonis dan efektif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">Tertarik Menjelajahi Lebih Banyak?</h2>
+                    <div class="card-content">
+                        <p>Dunia karir penuh dengan peluang tak terduga. Terkadang, jalan yang tidak biasa justru membawa kita pada passion sejati.</p>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="#" class="cta-btn" data-page="page1">Jelajahi Panduan Lainnya</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button class="nav-btn" data-page="page5">← Persiapan Interview</button>
+                    <button class="nav-btn" data-page="page1">Kembali ke Beranda</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 8: About Us -->
+        <section id="page8" class="page">
+            <div class="container">
+                <h1 class="page-title">Tentang KarirKita!</h1>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <p>KarirKita! adalah platform edukasi karir yang didedikasikan untuk membantu para pencari kerja Indonesia meningkatkan peluang mereka di dunia kerja yang kompetitif.</p>
                         
                         <div class="highlight-box">
-                            <h3>Kunci Utama:</h3>
+                            <h3>Misi Kami:</h3>
                             <ul class="tips-list">
-                                <li>Pahami cara kerja ATS dan adaptasi CV Anda</li>
-                                <li>Optimalkan kata kunci sesuai dengan job description</li>
-                                <li>Gunakan format yang sederhana dan mudah dipindai</li>
-                                <li>Sesuaikan CV untuk setiap posisi yang dilamar</li>
-                                <li>Pastikan informasi kontak lengkap dan jelas</li>
-                                <li>Persiapkan diri dengan baik untuk wawancara</li>
+                                <li>Memberikan panduan praktis untuk meningkatkan kualitas CV dan lamaran kerja</li>
+                                <li>Membantu persiapan wawancara yang efektif dan percaya diri</li>
+                                <li>Memperkenalkan berbagai peluang karir yang mungkin belum diketahui</li>
+                                <li>Mendorong pengembangan karir yang berkelanjutan</li>
                             </ul>
                         </div>
                         
-                        <p>Dengan menerapkan panduan ini, Anda akan meningkatkan peluang CV Anda untuk melewati sistem ATS dan sampai ke tangan rekruter yang tepat.</p>
-                        
-                        <div style="text-align: center; margin-top: 40px;">
-                            <a href="https://docs.google.com/document/d/1bnYEFX74FkPA93Tb5T09OyVQP0-2KemiNpfhqliYHPs/edit?usp=sharing" class="cta-btn" target="_blank">Lihat Contoh CV ATS-Friendly</a>
+                        <div class="about-us">
+                            <h2>Ikuti Kami di TikTok</h2>
+                            <p>Dapatkan tips karir harian, insight industri, dan konten inspiratif lainnya di TikTok kami!</p>
+                            <a href="https://www.tiktok.com/@karirkita.id" class="tiktok-btn" target="_blank">
+                                <span class="tiktok-icon">🔗</span>
+                                Ikuti Kami di TikTok
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="navigation">
-                    <button class="nav-btn" data-prev="page5">← Sebelumnya</button>
-                    <button class="nav-btn" data-next="page1">Kembali ke Awal</button>
+                    <button class="nav-btn" data-page="page1">← Kembali ke Beranda</button>
                 </div>
             </div>
         </section>
@@ -931,7 +1082,7 @@
     
     <footer>
         <div class="container">
-            <p>© 2023 ATS CV Guide - Panduan Lengkap Membuat CV yang Ramah ATS & Persiapan Interview</p>
+            <p>© 2023 KarirKita! - Panduan Lengkap Membuat CV yang Ramah ATS & Persiapan Interview</p>
         </div>
     </footer>
     
@@ -947,7 +1098,7 @@
             });
             
             // Page navigation
-            const navLinks = document.querySelectorAll('nav a, .main-cta');
+            const navLinks = document.querySelectorAll('nav a, .main-cta, .cta-btn');
             const navButtons = document.querySelectorAll('.nav-btn');
             const pages = document.querySelectorAll('.page');
             
@@ -979,7 +1130,7 @@
             // Navigation buttons
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const targetPage = this.getAttribute('data-next') || this.getAttribute('data-prev');
+                    const targetPage = this.getAttribute('data-page') || this.getAttribute('data-next') || this.getAttribute('data-prev');
                     if (targetPage) {
                         showPage(targetPage);
                     }
