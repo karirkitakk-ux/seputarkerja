@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide for ATS - Membuat CV Ramah ATS & Persiapan Interview</title>
+    <style>
+        :root {
+            --dark-blue: #1D2A62;
+            --light-yellow: #F5F38D;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #1D2A62;
+            --text-light: #F9F9F9;
+            --shadow: 0 4px 12px rgba(29, 42, 98, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-blue);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--light-yellow);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-yellow);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--light-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+            background-color: rgba(245, 243, 141, 0.1);
+        }
+        
+        /* Page Styles */
+        .page {
+            padding: 40px 0;
+            min-height: 100vh;
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-yellow);
+        }
+        
+        .page-subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--dark-blue);
+            opacity: 0.8;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(29, 42, 98, 0.15);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .card-content {
+            color: var(--text-dark);
+        }
+        
+        .highlight-box {
+            background-color: rgba(29, 42, 98, 0.05);
+            border-left: 4px solid var(--light-yellow);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Stats Container */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .stat-card {
+            background-color: var(--dark-blue);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--light-yellow);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-yellow);
+            margin-bottom: 8px;
+        }
+        
+        .stat-description {
+            color: var(--light-yellow);
+            font-size: 14px;
+        }
+        
+        /* Lists */
+        .tips-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .tips-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tips-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--light-yellow);
+            font-weight: bold;
+            background-color: var(--dark-blue);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Do-Don't Container */
+        .do-dont-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .do-section, .dont-section {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .do-section {
+            background-color: rgba(29, 42, 98, 0.05);
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .dont-section {
+            background-color: rgba(245, 243, 141, 0.2);
+            border-left: 4px solid var(--light-yellow);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .do-section .section-title {
+            color: var(--dark-blue);
+        }
+        
+        .dont-section .section-title {
+            color: var(--dark-blue);
+        }
+        
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(29, 42, 98, 0.9);
+        }
+        
+        /* CTA Buttons */
+        .cta-btn {
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(245, 243, 141, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Interview Section */
+        .interview-section {
+            margin-top: 30px;
+        }
+        
+        .interview-step {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(29, 42, 98, 0.1);
+        }
+        
+        .interview-step h3 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .interview-tips {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .interview-tip {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .interview-tip h4 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Main CTA Buttons */
+        .main-cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .main-cta {
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            border: none;
+            padding: 18px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .main-cta:hover {
+            background-color: rgba(245, 243, 141, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .main-cta.secondary {
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+        }
+        
+        .main-cta.secondary:hover {
+            background-color: rgba(29, 42, 98, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            padding: 25px 0;
+            text-align: center;
+            color: var(--light-yellow);
+            margin-top: 40px;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header-content {
+                position: relative;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                display: none;
+                padding: 15px 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+            
+            .page {
+                padding: 30px 0;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 16px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .do-dont-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .interview-tip {
+                padding: 15px;
+            }
+            
+            .main-cta {
+                padding: 15px 25px;
+                font-size: 16px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            .do-dont-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .interview-tips {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .main-cta-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .main-cta {
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">KarirKita!</div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#" data-page="page1">Beranda</a></li>
+                        <li><a href="#" data-page="page2">Memahami ATS</a></li>
+                        <li><a href="#" data-page="page3">Cara Kerja ATS</a></li>
+                        <li><a href="#" data-page="page4">Mengapa Penting</a></li>
+                        <li><a href="#" data-page="page5">Persiapan Interview</a></li>
+                        <li><a href="#" data-page="page6">Kesimpulan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Page 1: Introduction -->
+        <section id="page1" class="page active">
+            <div class="container">
+                <h1 class="page-title">Panduan Lengkap: Membuat CV yang Ramah ATS</h1>
+                <p class="page-subtitle">Pelajari cara mengoptimalkan CV Anda agar dapat melewati sistem pelacakan pelamar (ATS) dan meningkatkan peluang Anda untuk mendapatkan panggilan interview.</p>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-description">CV tidak pernah sampai ke HR karena tersaring ATS</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6 detik</div>
+                        <div class="stat-description">Waktu rata-rata ATS memindai CV</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-description">Peluang interview meningkat dengan CV ramah ATS</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Mulai Eksplorasi Panduan</h2>
+                    <div class="card-content">
+                        <p>Pilih fokus panduan yang ingin Anda pelajari terlebih dahulu:</p>
+                        
+                        <div class="main-cta-container">
+                            <a href="#" class="main-cta" data-page="page2">Panduan ATS</a>
+                            <a href="#" class="main-cta secondary" data-page="page5">Persiapan Interview</a>
+                        </div>
+                        
+                        <p style="margin-top: 30px; text-align: center;">Atau lanjutkan untuk mempelajari semua materi secara berurutan</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Apa yang Akan Dibahas</h2>
+                    <div class="card-content">
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">Memahami ATS</h3>
+                                <p>Mempelajari apa itu sistem ATS dan bagaimana cara kerjanya.</p>
+                            </div>
+                            <div class="do-section">
+                                <h3 class="section-title">Prinsip Optimasi</h3>
+                                <p>Kuasai prinsip-prinsip utama dalam membuat CV ramah ATS.</p>
+                            </div>
+                            <div class="do-section">
+                                <h3 class="section-title">Template Praktis</h3>
+                                <p>Gunakan template yang telah terbukti efektif melewati ATS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-next="page2">Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 2: Understanding ATS -->
+        <section id="page2" class="page">
+            <div class="container">
+                <h1 class="page-title">Memahami Applicant Tracking System (ATS)</h1>
+                <p class="page-subtitle">Gerbang Digital Menuju Karier Anda</p>
+                
+                <div class="card">
+                    <h2 class="card-title">Apa itu ATS?</h2>
+                    <div class="card-content">
+                        <p>Applicant Tracking System (ATS) adalah alat / software yang digunakan oleh perusahaan untuk mengotomatiskan proses rekrutmen. Sistem ini membantu HR dalam menyaring, mengelola, dan melacak lamaran kerja secara digital.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>Fitur Utama ATS:</h3>
+                            <ul class="tips-list">
+                                <li><strong>Basis Data Terpusat:</strong> Menyimpan dan mengorganisir semua data pelamar dalam satu sistem.</li>
+                                <li><strong>Penyaringan Otomatis:</strong> Mengidentifikasi kandidat yang sesuai berdasarkan kriteria tertentu.</li>
+                                <li><strong>Efisiensi Rekrutmen:</strong> Menghemat waktu HR dalam proses seleksi awal kandidat.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="stats-container">
+                            <div class="stat-card">
+                                <div class="stat-number">75%+</div>
+                                <div class="stat-description">CV tidak pernah sampai ke HR karena tersaring ATS</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">6 detik</div>
+                                <div class="stat-description">Waktu rata-rata ATS memindai CV</div>
+                            </div>
+                        </div>
+                        
+                        <p>Memahami cara kerja sistem ini adalah kunci untuk meningkatkan peluang Anda mendapatkan panggilan interview.</p>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-prev="page1">← Sebelumnya</button>
+                    <button class="nav-btn" data-next="page3">Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 3: How ATS Works -->
+        <section id="page3" class="page">
+            <div class="container">
+                <h1 class="page-title">Bagaimana Cara Kerja ATS?</h1>
+                <p class="page-subtitle">Alur Proses dari Sudut Pandang ATS</p>
+                
+                <div class="card">
+                    <h2 class="card-title">Alur Proses Otomatis ATS</h2>
+                    <div class="card-content">
+                        <ol class="tips-list">
+                            <li><strong>Upload CV:</strong> Pelamar mengirimkan CV melalui portal karier atau email.</li>
+                            <li><strong>Parsing Data:</strong> ATS mengekstrak informasi dari CV (nama, kontak, pengalaman).</li>
+                            <li><strong>Keyword Matching:</strong> Sistem mencari kata kunci yang sesuai dengan job description.</li>
+                            <li><strong>Scoring & Ranking:</strong> Memberikan skor berdasarkan tingkat kesesuaian.</li>
+                            <li><strong>Human Review:</strong> Hanya CV yang lolos dan memiliki skor tinggi yang akan diteruskan ke HR.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="do-dont-container">
+                    <div class="do-section">
+                        <h3 class="section-title">Tips Melewati ATS</h3>
+                        <ul class="tips-list">
+                            <li>Gunakan format standar (PDF atau DOC)</li>
+                            <li>Sertakan kata kunci dari job description</li>
+                            <li>Hindari tabel dan kolom kompleks</li>
+                            <li>Gunakan font standar dan heading yang jelas</li>
+                            <li>Sertakan informasi kontak yang lengkap</li>
+                            <li>Optimalisasi untuk setiap lamaran</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dont-section">
+                        <h3 class="section-title">Alasan CV Ditolak ATS</h3>
+                        <ul class="tips-list">
+                            <li>Format file tidak didukung</li>
+                            <li>Layout CV terlalu kompleks</li>
+                            <li>Kurangnya kata kunci relevan</li>
+                            <li>Informasi kontak tidak jelas</li>
+                            <li>Penggunaan grafik berlebihan</li>
+                            <li>Font atau formatting aneh</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-prev="page2">← Sebelumnya</button>
+                    <button class="nav-btn" data-next="page4">Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 4: Why It Matters -->
+        <section id="page4" class="page">
+            <div class="container">
+                <h1 class="page-title">Mengapa CV Ramah ATS Begitu Penting?</h1>
+                <p class="page-subtitle">Analisis Dampak dan Implikasi untuk Karier Anda</p>
+                
+                <div class="card">
+                    <h2 class="card-title">Realitas Pasar Kerja Modern</h2>
+                    <div class="card-content">
+                        <div class="stats-container">
+                            <div class="stat-card">
+                                <div class="stat-number">250+</div>
+                                <div class="stat-description">lamaran per posisi populer</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">75%</div>
+                                <div class="stat-description">CV ditolak sebelum dilihat manusia</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">6 detik</div>
+                                <div class="stat-description">Waktu rata-rata review CV oleh manusia</div>
+                            </div>
+                        </div>
+                        
+                        <p>Dalam kompetisi ketat ini, CV yang ramah ATS adalah keharusan untuk unggul.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Dampak Positif CV Ramah ATS</h2>
+                    <div class="card-content">
+                        <div class="stats-container">
+                            <div class="stat-card">
+                                <div class="stat-number">3x</div>
+                                <div class="stat-description">Peluang Interview Meningkat</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15-25%</div>
+                                <div class="stat-description">Nilai Gaji Lebih Tinggi</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-description">Targeting yang Tepat</div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <p><strong>Proses Lebih Cepat:</strong> Mengurangi waktu tunggu respons dari perusahaan (2-5 hari vs 2-3 minggu).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-prev="page3">← Sebelumnya</button>
+                    <button class="nav-btn" data-next="page5">Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 5: Interview Preparation -->
+        <section id="page5" class="page">
+            <div class="container">
+                <h1 class="page-title">Persiapan Wawancara Kerja yang Efektif</h1>
+                <p class="page-subtitle">Langkah-langkah lengkap untuk mempersiapkan diri menghadapi wawancara kerja</p>
+                
+                <div class="card">
+                    <h2 class="card-title">Persiapan Sebelum Wawancara</h2>
+                    <div class="card-content">
+                        <div class="interview-section">
+                            <div class="interview-step">
+                                <h3>1. Riset Perusahaan dan Posisi</h3>
+                                <p>Pelajari secara mendalam tentang perusahaan yang akan Anda lamar:</p>
+                                <ul class="tips-list">
+                                    <li>Sejarah, visi, dan misi perusahaan</li>
+                                    <li>Produk atau layanan yang ditawarkan</li>
+                                    <li>Budaya perusahaan dan nilai-nilai inti</li>
+                                    <li>Pesaing utama dan posisi perusahaan di industri</li>
+                                    <li>Berita atau perkembangan terbaru tentang perusahaan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="interview-step">
+                                <h3>2. Pahami Deskripsi Pekerjaan dengan Baik</h3>
+                                <p>Analisis job description untuk memahami:</p>
+                                <ul class="tips-list">
+                                    <li>Kualifikasi dan keterampilan yang dibutuhkan</li>
+                                    <li>Tanggung jawab utama posisi tersebut</li>
+                                    <li>Kata kunci yang bisa Anda gunakan dalam wawancara</li>
+                                    <li>Bagaimana pengalaman Anda sesuai dengan kebutuhan posisi</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="interview-step">
+                                <h3>3. Siapkan Cerita dan Contoh</h3>
+                                <p>Siapkan contoh konkret dari pengalaman kerja Anda:</p>
+                                <ul class="tips-list">
+                                    <li>Pencapaian terbesar dalam karier</li>
+                                    <li>Cara mengatasi tantangan atau konflik</li>
+                                    <li>Pengalaman memimpin proyek atau tim</li>
+                                    <li>Situasi ketika Anda menunjukkan inisiatif</li>
+                                    <li>Contoh kemampuan memecahkan masalah</li>
+                                </ul>
+                                <p>Gunakan metode STAR (Situation, Task, Action, Result) untuk menyusun cerita Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Selama Wawancara</h2>
+                    <div class="card-content">
+                        <div class="interview-section">
+                            <div class="interview-step">
+                                <h3>1. Teknik Menjawab Pertanyaan</h3>
+                                <p>Tips untuk menjawab berbagai jenis pertanyaan wawancara:</p>
+                                <ul class="tips-list">
+                                    <li><strong>Pertanyaan Perilaku:</strong> Gunakan metode STAR untuk memberikan jawaban terstruktur</li>
+                                    <li><strong>Pertanyaan Teknis:</strong> Jelaskan dengan jelas dan tunjukkan proses berpikir Anda</li>
+                                    <li><strong>Pertanyaan Situasional:</strong> Jelaskan pendekatan Anda dalam menghadapi skenario tertentu</li>
+                                    <li><strong>Pertanyaan tentang Kelemahan:</strong> Pilih kelemahan nyata tapi bisa diperbaiki, dan tunjukkan langkah perbaikan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="interview-step">
+                                <h3>2. Komunikasi Non-Verbal yang Efektif</h3>
+                                <p>Perhatikan bahasa tubuh Anda selama wawancara:</p>
+                                <ul class="tips-list">
+                                    <li>Jaga kontak mata yang baik (tapi tidak menatap)</li>
+                                    <li>Duduk dengan postur tegak tapi rileks</li>
+                                    <li>Gunakan gerakan tangan secukupnya untuk menekankan poin penting</li>
+                                    <li>Tersenyum dan tunjukkan antusiasme</li>
+                                    <li>Hindari gerakan gelisah seperti mengetuk jari atau mengayunkan kaki</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Setelah Wawancara</h2>
+                    <div class="card-content">
+                        <div class="interview-section">
+                            <div class="interview-step">
+                                <h3>1. Tindak Lanjut</h3>
+                                <p>Langkah-langkah penting setelah wawancara:</p>
+                                <ul class="tips-list">
+                                    <li>Kirim email terima kasih dalam 24 jam setelah wawancara</li>
+                                    <li>Ulangi ketertarikan Anda pada posisi tersebut</li>
+                                    <li>Sebutkan poin penting dari pembicaraan selama wawancara</li>
+                                    <li>Tawarkan untuk memberikan informasi tambahan jika diperlukan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="interview-step">
+                                <h3>2. Evaluasi Diri</h3>
+                                <p>Refleksikan performa wawancara Anda:</p>
+                                <ul class="tips-list">
+                                    <li>Identifikasi pertanyaan yang sulit Anda jawab</li>
+                                    <li>Catat area yang perlu ditingkatkan untuk wawancara berikutnya</li>
+                                    <li>Evaluasi apakah perusahaan dan posisi sesuai dengan tujuan karier Anda</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interview-tips">
+                    <div class="interview-tip">
+                        <h4>Pertanyaan Umum Wawancara</h4>
+                        <ul class="tips-list">
+                            <li>Ceritakan tentang diri Anda</li>
+                            <li>Mengapa Anda ingin bekerja di perusahaan kami?</li>
+                            <li>Apa kelebihan dan kelemahan Anda?</li>
+                            <li>Di mana Anda melihat diri Anda dalam 5 tahun?</li>
+                            <li>Mengapa kami harus mempekerjakan Anda?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="interview-tip">
+                        <h4>Pertanyaan untuk Pewawancara</h4>
+                        <ul class="tips-list">
+                            <li>Apa tantangan terbesar untuk posisi ini?</li>
+                            <li>Bagaimana budaya tim di sini?</li>
+                            <li>Apa metrik kesuksesan untuk posisi ini?</li>
+                            <li>Bagaimana perkembangan karier di perusahaan ini?</li>
+                            <li>Apa langkah selanjutnya dalam proses rekrutmen?</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-prev="page4">← Sebelumnya</button>
+                    <button class="nav-btn" data-next="page6">Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Page 6: Conclusion -->
+        <section id="page6" class="page">
+            <div class="container">
+                <h1 class="page-title">Kesimpulan</h1>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <p>CV yang sesuai dengan ATS bukan hanya membantu melewati sistem seleksi, tapi juga menyampaikan nilai dan kelebihan Anda secara jelas kepada rekruter. Dengan menerapkan prinsip yang tepat, Anda bisa punya daya saing lebih kuat di pasar kerja yang kini serba digital.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>Kunci Utama:</h3>
+                            <ul class="tips-list">
+                                <li>Pahami cara kerja ATS dan adaptasi CV Anda</li>
+                                <li>Optimalkan kata kunci sesuai dengan job description</li>
+                                <li>Gunakan format yang sederhana dan mudah dipindai</li>
+                                <li>Sesuaikan CV untuk setiap posisi yang dilamar</li>
+                                <li>Pastikan informasi kontak lengkap dan jelas</li>
+                                <li>Persiapkan diri dengan baik untuk wawancara</li>
+                            </ul>
+                        </div>
+                        
+                        <p>Dengan menerapkan panduan ini, Anda akan meningkatkan peluang CV Anda untuk melewati sistem ATS dan sampai ke tangan rekruter yang tepat.</p>
+                        
+                        <div style="text-align: center; margin-top: 40px;">
+                            <a href="https://docs.google.com/document/d/1bnYEFX74FkPA93Tb5T09OyVQP0-2KemiNpfhqliYHPs/edit?usp=sharing" class="cta-btn" target="_blank">Lihat Contoh CV ATS-Friendly</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" data-prev="page5">← Sebelumnya</button>
+                    <button class="nav-btn" data-next="page1">Kembali ke Awal</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 ATS CV Guide - Panduan Lengkap Membuat CV yang Ramah ATS & Persiapan Interview</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            
+            hamburger.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Page navigation
+            const navLinks = document.querySelectorAll('nav a, .main-cta');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const pages = document.querySelectorAll('.page');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                nav.classList.remove('active');
+                
+                // Scroll to top when changing pages
+                window.scrollTo(0, 0);
+            }
+            
+            // Navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    if (pageId) {
+                        showPage(pageId);
+                    }
+                });
+            });
+            
+            // Navigation buttons
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-next') || this.getAttribute('data-prev');
+                    if (targetPage) {
+                        showPage(targetPage);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
