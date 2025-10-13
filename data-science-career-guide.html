@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Karir Data Science - KarirKita!</title>
+    <style>
+        :root {
+            --dark-blue: #1D2A62;
+            --light-yellow: #F5F38D;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #1D2A62;
+            --text-light: #F9F9F9;
+            --shadow: 0 4px 12px rgba(29, 42, 98, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-blue);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--light-yellow);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-yellow);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--light-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+            background-color: rgba(245, 243, 141, 0.1);
+        }
+        
+        /* Page Styles */
+        .page {
+            padding: 40px 0;
+            min-height: 100vh;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-yellow);
+        }
+        
+        .page-subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--dark-blue);
+            opacity: 0.8;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(29, 42, 98, 0.15);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .card-content {
+            color: var(--text-dark);
+        }
+        
+        .highlight-box {
+            background-color: rgba(29, 42, 98, 0.05);
+            border-left: 4px solid var(--light-yellow);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Stats Container */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .stat-card {
+            background-color: var(--dark-blue);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--light-yellow);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-yellow);
+            margin-bottom: 8px;
+        }
+        
+        .stat-description {
+            color: var(--light-yellow);
+            font-size: 14px;
+        }
+        
+        /* Lists */
+        .tips-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .tips-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tips-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--light-yellow);
+            font-weight: bold;
+            background-color: var(--dark-blue);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Do-Don't Container */
+        .do-dont-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .do-section, .dont-section {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .do-section {
+            background-color: rgba(29, 42, 98, 0.05);
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .dont-section {
+            background-color: rgba(245, 243, 141, 0.2);
+            border-left: 4px solid var(--light-yellow);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .do-section .section-title {
+            color: var(--dark-blue);
+        }
+        
+        .dont-section .section-title {
+            color: var(--dark-blue);
+        }
+        
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(29, 42, 98, 0.9);
+        }
+        
+        /* CTA Buttons */
+        .cta-btn {
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(245, 243, 141, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Interview Section */
+        .interview-section {
+            margin-top: 30px;
+        }
+        
+        .interview-step {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(29, 42, 98, 0.1);
+        }
+        
+        .interview-step h3 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .interview-tips {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .interview-tip {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .interview-tip h4 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Main CTA Buttons */
+        .main-cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .main-cta {
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            border: none;
+            padding: 18px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .main-cta:hover {
+            background-color: rgba(245, 243, 141, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .main-cta.secondary {
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+        }
+        
+        .main-cta.secondary:hover {
+            background-color: rgba(29, 42, 98, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            padding: 25px 0;
+            text-align: center;
+            color: var(--light-yellow);
+            margin-top: 40px;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            background-color: rgba(29, 42, 98, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            height: 8px;
+        }
+        
+        .progress-bar {
+            background-color: var(--dark-blue);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Resource */
+        .resource-section {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: rgba(29, 42, 98, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid var(--light-yellow);
+        }
+
+        .resource-title {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 16px;
+        }
+
+        .resource-list {
+            margin-top: 12px;
+        }
+
+        /* Course Cards */
+        .course-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .course-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--light-yellow);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(29, 42, 98, 0.15);
+        }
+        
+        .course-level {
+            display: inline-block;
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+        
+        .course-duration {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--dark-blue);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 50px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 12px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background-color: var(--light-yellow);
+            border: 3px solid var(--dark-blue);
+            border-radius: 50%;
+        }
+        
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            .resource-section {
+                margin: 20px 0;
+                padding: 12px;
+            }
+
+            .resource-title {
+                font-size: 15px;
+            }
+            .header-content {
+                position: relative;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                display: none;
+                padding: 15px 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+            
+            .page {
+                padding: 30px 0;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 16px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .do-dont-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .interview-tip {
+                padding: 15px;
+            }
+            
+            .main-cta {
+                padding: 15px 25px;
+                font-size: 16px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .course-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 40px;
+            }
+            
+            .timeline-marker {
+                left: 8px;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            .do-dont-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .interview-tips {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .main-cta-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .main-cta {
+                min-width: 250px;
+            }
+            
+            .course-cards {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">KarirKita!</div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="pekerjaan-unik-list.html">Pekerjaan Unik</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page active">
+            <div class="container">
+                <h1 class="page-title">📊 Panduan Karir di Data Science</h1>
+                <p class="page-subtitle">Pelajari cara membangun karir sukses sebagai Data Scientist, Data Analyst, dan Data Engineer dari dasar hingga expert</p>
+
+                <!-- Quick Stats -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">300%</div>
+                        <div class="stat-description">Peningkatan demand dalam 2 tahun</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Rp 11-16 Jt</div>
+                        <div class="stat-description">Gaji fresh graduate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-description">Perusahaan butuh talent data</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Future-Proof</div>
+                        <div class="stat-description">Skill yang terus dibutuhkan</div>
+                    </div>
+                </div>
+
+                <!-- Apa itu Data Science -->
+                <div class="card">
+                    <h2 class="card-title">📈 Apa itu Data Science?</h2>
+                    <div class="card-content">
+                        <p><strong>Data Science</strong> adalah bidang multidisiplin yang menggabungkan statistik, pemrograman, dan domain knowledge untuk mengekstrak wawasan dan pengetahuan dari data.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>Mengapa Data Science Sangat Penting?</h3>
+                            <ul class="tips-list">
+                                <li><strong>Pengambilan Keputusan Berbasis Data:</strong> Membantu perusahaan membuat keputusan yang lebih tepat</li>
+                                <li><strong>Prediksi Masa Depan:</strong> Membuat prediksi tren dan perilaku pelanggan</li>
+                                <li><strong>Otomatisasi Proses:</strong> Mengotomatisasi tugas-tugas kompleks dengan AI</li>
+                                <li><strong>Personalization:</strong> Menyediakan pengalaman yang dipersonalisasi untuk pelanggan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mengapa Memilih Karir Data Science -->
+                <div class="card">
+                    <h2 class="card-title">💡 Mengapa Memilih Karir di Data Science?</h2>
+                    <div class="card-content">
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">✅ Keuntungan Karir Data Science</h3>
+                                <ul class="tips-list">
+                                    <li><strong>Gaji Kompetitif:</strong> Fresh graduate Rp 11-16 juta, Senior bisa mencapai Rp 40-70 juta</li>
+                                    <li><strong>Demand Tinggi:</strong> 300% peningkatan permintaan dalam 2 tahun terakhir</li>
+                                    <li><strong>Beragam Industri:</strong> Dibutuhkan di semua sektor (finance, retail, healthcare, dll)</li>
+                                    <li><strong>Continuous Learning:</strong> Teknologi dan metode terus berkembang</li>
+                                    <li><strong>Remote Work:</strong> Banyak peluang kerja remote dan fleksibel</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="do-section">
+                                <h3 class="section-title">📈 Prospek Masa Depan</h3>
+                                <ul class="tips-list">
+                                    <li><strong>AI & Machine Learning:</strong> Teknologi AI semakin canggih dan dibutuhkan</li>
+                                    <li><strong>Big Data:</strong> Volume data terus bertambah, butuh ahli untuk mengelolanya</li>
+                                    <li><strong>Business Intelligence:</strong> Perusahaan butuh insight dari data untuk bersaing</li>
+                                    <li><strong>Skill Gap:</strong> Permintaan > Supply talent Data Science yang qualified</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jenis-jenis Profesi Data Science -->
+                <div class="card">
+                    <h2 class="card-title">👨‍💼 Jenis-jenis Profesi di Data Science</h2>
+                    <div class="card-content">
+                        <div class="interview-tips">
+                            <div class="interview-tip">
+                                <h4>📊 Data Analyst</h4>
+                                <p>Spesialis yang menganalisis data untuk mengidentifikasi tren, membuat visualisasi, dan memberikan insight bisnis.</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                                <p><strong>Gaji:</strong> Rp 12-25 juta/bulan</p>
+                                <p><strong>Skill:</strong> SQL, Excel, Tableau/Power BI, Python/R dasar, Statistik</p>
+                            </div>
+                            
+                            <div class="interview-tip">
+                                <h4>🤖 Data Scientist</h4>
+                                <p>Spesialis yang membangun model prediktif dan machine learning untuk memecahkan masalah bisnis yang kompleks.</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                                <p><strong>Gaji:</strong> Rp 18-45 juta/bulan</p>
+                                <p><strong>Skill:</strong> Python/R lanjutan, Machine Learning, Deep Learning, Statistik lanjutan</p>
+                            </div>
+                            
+                            <div class="interview-tip">
+                                <h4>🔧 Data Engineer</h4>
+                                <p>Spesialis yang membangun dan memelihara infrastruktur data (data pipelines, databases, data warehouses).</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                                <p><strong>Gaji:</strong> Rp 16-40 juta/bulan</p>
+                                <p><strong>Skill:</strong> SQL lanjutan, Python, Cloud (AWS/GCP/Azure), Big Data tools (Spark, Hadoop)</p>
+                            </div>
+                            
+                            <div class="interview-tip">
+                                <h4>📈 Business Intelligence Analyst</h4>
+                                <p>Spesialis yang fokus pada pembuatan dashboard dan laporan untuk membantu pengambilan keputusan bisnis.</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                                <p><strong>Gaji:</strong> Rp 14-30 juta/bulan</p>
+                                <p><strong>Skill:</strong> Tableau/Power BI, SQL, Excel, Understanding Business Processes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roadmap Belajar Data Science -->
+                <div class="card">
+                    <h2 class="card-title">🛣️ Roadmap Belajar Data Science (0 to Hero)</h2>
+                    <div class="card-content">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Fase 1: Foundation (0-3 Bulan)</h3>
+                                    <ul class="tips-list">
+                                        <li>Pelajari dasar Python/R untuk analisis data</li>
+                                        <li>Pahami konsep statistik dasar (mean, median, distribusi, dll)</li>
+                                        <li>Pelajari SQL untuk querying database</li>
+                                        <li>Eksplorasi dataset sederhana dengan Pandas/Excel</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Fase 2: Data Analysis & Visualization (3-6 Bulan)</h3>
+                                    <ul class="tips-list">
+                                        <li>Pelajari library visualisasi (Matplotlib, Seaborn, Plotly)</li>
+                                        <li>Kuasa Tableau atau Power BI untuk dashboarding</li>
+                                        <li>Pelajari teknik data cleaning dan preprocessing</li>
+                                        <li>Bangun portfolio dengan project analisis data nyata</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Fase 3: Machine Learning (6-12 Bulan)</h3>
+                                    <ul class="tips-list">
+                                        <li>Pelajari algoritma ML dasar (regresi, klasifikasi, clustering)</li>
+                                        <li>Pahami evaluasi model (accuracy, precision, recall, ROC)</li>
+                                        <li>Pelajari Scikit-learn untuk implementasi ML</li>
+                                        <li>Bangun project ML end-to-end</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Fase 4: Specialization (12+ Bulan)</h3>
+                                    <ul class="tips-list">
+                                        <li>Pilih spesialisasi (NLP, Computer Vision, Time Series, dll)</li>
+                                        <li>Pelajari Deep Learning dengan TensorFlow/PyTorch</li>
+                                        <li>Eksplorasi Big Data tools (Spark, Hadoop)</li>
+                                        <li>Terus update dengan teknik dan tools terbaru</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools dan Teknologi -->
+                <div class="card">
+                    <h2 class="card-title">🛠️ Tools & Teknologi Wajib Dikuasai</h2>
+                    <div class="card-content">
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">📊 Data Visualization & Dashboard</h3>
+                                <ul class="tips-list">
+                                    <li><strong>Tableau:</strong> Tool visualisasi data terpopuler untuk bisnis</li>
+                                    <li><strong>Power BI:</strong> Tool Microsoft untuk BI dan dashboard</li>
+                                    <li><strong>Google Data Studio:</strong> Tool gratis dari Google untuk reporting</li>
+                                    <li><strong>Python Libraries:</strong> Matplotlib, Seaborn, Plotly untuk visualisasi programatik</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="do-section">
+                                <h3 class="section-title">💻 Programming & Analysis</h3>
+                                <ul class="tips-list">
+                                    <li><strong>Python:</strong> Bahasa utama untuk data science (Pandas, NumPy, Scikit-learn)</li>
+                                    <li><strong>R:</strong> Bahasa khusus untuk analisis statistik</li>
+                                    <li><strong>SQL:</strong> Wajib untuk query dan manipulasi data</li>
+                                    <li><strong>Excel/Google Sheets:</strong> Masih sangat relevan untuk analisis cepat</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">☁️ Big Data & Cloud</h3>
+                                <ul class="tips-list">
+                                    <li><strong>AWS:</strong> S3, Redshift, SageMaker untuk ML</li>
+                                    <li><strong>Google Cloud:</strong> BigQuery, AI Platform</li>
+                                    <li><strong>Microsoft Azure:</strong> Azure ML, Data Factory</li>
+                                    <li><strong>Apache Spark:</strong> Untuk processing data skala besar</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="do-section">
+                                <h3 class="section-title">🤖 Machine Learning & AI</h3>
+                                <ul class="tips-list">
+                                    <li><strong>Scikit-learn:</strong> Library ML paling populer di Python</li>
+                                    <li><strong>TensorFlow/PyTorch:</strong> Untuk Deep Learning</li>
+                                    <li><strong>XGBoost/LightGBM:</strong> Untuk model tree-based yang powerful</li>
+                                    <li><strong>Hugging Face:</strong> Untuk model NLP state-of-the-art</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rekomendasi Kursus & Sertifikasi -->
+                <div class="card">
+                    <h2 class="card-title">🎓 Rekomendasi Kursus & Sertifikasi</h2>
+                    <div class="card-content">
+                        <div class="course-cards">
+                            <div class="course-card">
+                                <span class="course-level">Pemula</span>
+                                <h3 class="course-title">Google Data Analytics Professional Certificate</h3>
+                                <p class="course-duration">🕒 6 bulan | 💰 $39/bulan (Coursera)</p>
+                                <p>Program sertifikasi lengkap dari Google untuk menjadi Data Analyst. Covers SQL, R, Tableau, dan proses analisis data.</p>
+                                <a href="https://www.coursera.org/professional-certificates/google-data-analytics" class="cta-btn" style="margin-top: 15px;">Lihat Kursus</a>
+                            </div>
+                            
+                            <div class="course-card">
+                                <span class="course-level">Menengah</span>
+                                <h3 class="course-title">IBM Data Science Professional Certificate</h3>
+                                <p class="course-duration">🕒 3-5 bulan | 💰 $39/bulan (Coursera)</p>
+                                <p>9-course series yang mencakup Python, SQL, ML, dan data visualization. Sempurna untuk karir Data Science.</p>
+                                <a href="https://www.coursera.org/professional-certificates/ibm-data-science" class="cta-btn" style="margin-top: 15px;">Lihat Kursus</a>
+                            </div>
+                            
+                            <div class="course-card">
+                                <span class="course-level">Lanjutan</span>
+                                <h3 class="course-title">Deep Learning Specialization (DeepLearning.AI)</h3>
+                                <p class="course-duration">🕒 4 bulan | 💰 $49/bulan (Coursera)</p>
+                                <p>Diajarkan oleh Andrew Ng, kursus ini mencakup Neural Networks, CNN, RNN, dan Transformer.</p>
+                                <a href="https://www.coursera.org/specializations/deep-learning" class="cta-btn" style="margin-top: 15px;">Lihat Kursus</a>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 25px;">
+                            <h3>💡 Tips Memilih Kursus Data Science</h3>
+                            <ul class="tips-list">
+                                <li><strong>Start with Fundamentals:</strong> Pastikan menguasai statistik, Python, dan SQL sebelum lanjut ke ML</li>
+                                <li><strong>Hands-on Projects:</strong> Pilih kursus dengan project nyata untuk portfolio</li>
+                                <li><strong>Community Support:</strong> Kursus dengan forum aktif lebih membantu</li>
+                                <li><strong>Industry Recognition:</strong> Sertifikasi dari perusahaan terkemuka (Google, IBM, Microsoft) lebih dihargai</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANDUAN KHUSUS: Tableau dan Dashboard Data Analyst -->
+                <div class="card">
+                    <h2 class="card-title">📊 Panduan Lengkap: Belajar Tableau & Dashboard untuk Data Analyst</h2>
+                    <div class="card-content">
+                        <h3 style="margin-bottom: 15px; color: var(--dark-blue);">Mengapa Tableau Penting untuk Data Analyst?</h3>
+                        <p>Tableau adalah tool visualisasi data terkemuka yang digunakan oleh 86% perusahaan Fortune 500. Keunggulannya:</p>
+                        
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">✅ Kelebihan Tableau</h3>
+                                <ul class="tips-list">
+                                    <li><strong>User-Friendly:</strong> Drag-and-drop interface yang mudah dipelajari</li>
+                                    <li><strong>Powerful Visualization:</strong> Membuat visualisasi kompleks dengan mudah</li>
+                                    <li><strong>Real-time Data:</strong> Koneksi langsung ke berbagai sumber data</li>
+                                    <li><strong>Mobile-Friendly:</strong> Dashboard yang responsive di berbagai device</li>
+                                    <li><strong>Community yang Aktif:</strong> Banyak resource dan forum diskusi</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="do-section">
+                                <h3 class="section-title">🎯 Kapan Menggunakan Tableau?</h3>
+                                <ul class="tips-list">
+                                    <li>Membuat dashboard interaktif untuk stakeholder</li>
+                                    <li>Visualisasi data yang kompleks dengan cepat</li>
+                                    <li>Sharing insight dengan tim non-technical</li>
+                                    <li>Monitoring KPI dan metrik bisnis secara real-time</li>
+                                    <li>Exploratory Data Analysis (EDA) yang visual</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 style="margin: 25px 0 15px; color: var(--dark-blue);">Tempat Belajar Tableau (Free & Paid)</h3>
+                        
+                        <div class="interview-tips">
+                            <div class="interview-tip">
+                                <h4>🎓 FREE Resources untuk Belajar Tableau</h4>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">1. Tableau Public (Gratis)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Akses:</strong> Tableau Public desktop app gratis</li>
+                                        <li><strong>Kelebihan:</strong> Versi lengkap untuk belajar, bisa publish dashboard online</li>
+                                        <li><strong>Kekurangan:</strong> Data yang digunakan akan public</li>
+                                        <li><strong>Link:</strong> <a href="https://public.tableau.com" target="_blank">tableau.com/public</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">2. Tableau Training Videos (Gratis)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Akses:</strong> Video training resmi dari Tableau</li>
+                                        <li><strong>Kelebihan:</strong> Materi langsung dari pembuat Tableau, terstruktur</li>
+                                        <li><strong>Kekurangan:</strong> Tidak ada sertifikat gratis</li>
+                                        <li><strong>Link:</strong> <a href="https://www.tableau.com/learn/training" target="_blank">tableau.com/learn/training</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">3. YouTube Channels (Gratis)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Tableau Tim:</strong> Channel official Tableau</li>
+                                        <li><strong>Andy Kriebel:</strong> Tableau Zen Master dengan tips advanced</li>
+                                        <li><strong>Tableau Wannabe:</strong> Tutorial dalam Bahasa Indonesia</li>
+                                        <li><strong>Link:</strong> Cari "Tableau Tutorial" di YouTube</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="interview-tip">
+                                <h4>💳 PAID Resources untuk Belajar Tableau</h4>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">1. Tableau Desktop Specialist Certification (Rp 2.5 juta)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Level:</strong> Pemula-Menengah</li>
+                                        <li><strong>Kelebihan:</strong> Sertifikasi resmi, diakui industri</li>
+                                        <li><strong>Durasi:</strong> Persiapan 2-3 bulan</li>
+                                        <li><strong>Link:</strong> <a href="https://www.tableau.com/learn/certification/desktop-specialist" target="_blank">tableau.com/certification</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">2. Coursera: Data Visualization with Tableau (Rp 500-800rb/bulan)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Platform:</strong> Coursera (University of California)</li>
+                                        <li><strong>Kelebihan:</strong> Terstruktur, dapat sertifikat, project-based</li>
+                                        <li><strong>Durasi:</strong> 4-6 minggu</li>
+                                        <li><strong>Link:</strong> <a href="https://www.coursera.org/learn/data-visualization-tableau" target="_blank">coursera.org/learn/data-visualization-tableau</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">3. Udemy: Tableau 2022/2023 A-Z (Rp 150-300rb)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Instructor:</strong> Kirill Eremenko</li>
+                                        <li><strong>Kelebihan:</strong> Harga terjangkau, lengkap, lifetime access</li>
+                                        <li><strong>Rating:</strong> 4.6/5 (100,000+ students)</li>
+                                        <li><strong>Link:</strong> <a href="https://www.udemy.com/course/tableau10/" target="_blank">udemy.com/course/tableau10</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="resource-section">
+                                    <p class="resource-title">4. LinkedIn Learning (Rp 300rb/bulan)</p>
+                                    <ul class="tips-list resource-list">
+                                        <li><strong>Kelebihan:</strong> Integrated dengan LinkedIn profile, banyak pilihan course</li>
+                                        <li><strong>Certificate:</strong> Bisa ditampilkan di LinkedIn</li>
+                                        <li><strong>Durasi:</strong> 1 bulan cukup untuk belajar dasar Tableau</li>
+                                        <li><strong>Link:</strong> <a href="https://www.linkedin.com/learning" target="_blank">linkedin.com/learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin: 25px 0 15px; color: var(--dark-blue);">Roadmap Belajar Tableau (0 to Pro)</h3>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Minggu 1-2: Dasar Tableau</h3>
+                                    <ul class="tips-list">
+                                        <li>Install Tableau Public (gratis)</li>
+                                        <li>Pelajari interface dan terminology</li>
+                                        <li>Buat visualisasi dasar (bar chart, line chart, pie chart)</li>
+                                        <li>Pahami perbedaan Dimensions vs Measures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Minggu 3-4: Intermediate Skills</h3>
+                                    <ul class="tips-list">
+                                        <li>Pelajari calculated fields dan basic formulas</li>
+                                        <li>Buat dashboard dengan multiple visualizations</li>
+                                        <li>Pelajari filtering dan parameters</li>
+                                        <li>Eksplorasi different chart types (scatter plot, treemap, etc)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Minggu 5-6: Advanced Techniques</h3>
+                                    <ul class="tips-list">
+                                        <li>Pelajari Level of Detail (LOD) expressions</li>
+                                        <li>Buat interactive dashboards dengan actions</li>
+                                        <li>Pelajari data blending dari multiple sources</li>
+                                        <li>Optimalkan performance dashboard</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Minggu 7-8: Portfolio & Certification</h3>
+                                    <ul class="tips-list">
+                                        <li>Buat 3-5 project portfolio di Tableau Public</li>
+                                        <li>Pelajari best practices dashboard design</li>
+                                        <li>Persiapkan untuk Tableau Desktop Specialist exam</li>
+                                        <li>Terus eksplor advanced features sesuai kebutuhan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h3>💡 Tips Sukses Belajar Tableau</h3>
+                            <ul class="tips-list">
+                                <li><strong>Practice Daily:</strong> Luangkan 30-60 menit setiap hari untuk praktik</li>
+                                <li><strong>Follow Experts:</strong> Ikuti Tableau Zen Masters di social media</li>
+                                <li><strong>Join Community:</strong> Tableau Community Forum sangat helpful untuk bertanya</li>
+                                <li><strong>Work on Real Projects:</strong> Gunakan dataset dari Kaggle atau data kerja untuk praktik</li>
+                                <li><strong>Build Portfolio:</strong> Tableau Public profile yang bagus bisa jadi portfolio digital</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Memulai Karir Data Science -->
+                <div class="card">
+                    <h2 class="card-title">🚀 Tips Memulai Karir di Data Science</h2>
+                    <div class="card-content">
+                        <div class="do-dont-container">
+                            <div class="do-section">
+                                <h3 class="section-title">✅ Yang Harus Dilakukan</h3>
+                                <ul class="tips-list">
+                                    <li>Bangun portfolio dengan project nyata (gunakan dataset dari Kaggle)</li>
+                                    <li>Kuasa fundamental (statistik, SQL, Python) sebelum loncat ke ML advanced</li>
+                                    <li>Ikut kompetisi data science (Kaggle, DrivenData) untuk experience</li>
+                                    <li>Network dengan data professionals di LinkedIn dan komunitas</li>
+                                    <li>Terus belajar dan update dengan teknologi terbaru</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="dont-section">
+                                <h3 class="section-title">❌ Yang Harus Dihindari</h3>
+                                <ul class="tips-list">
+                                    <li>Langsung belajar ML complex tanpa paham fundamental</li>
+                                    <li>Hanya belajar theory tanpa praktik dengan project nyata</li>
+                                    <li>Mengabaikan soft skills dan business communication</li>
+                                    <li>Fokus hanya pada 1 tool/technology saja</li>
+                                    <li>Berhenti belajar karena merasa sudah cukup</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="card">
+                    <h2 class="card-title">🎯 Action Plan: Langkah Selanjutnya</h2>
+                    <div class="card-content">
+                        <div class="interview-step">
+                            <h3>Minggu 1-2: Foundation Phase</h3>
+                            <ul class="tips-list">
+                                <li>Install Python dan Jupyter Notebook</li>
+                                <li>Pelajari dasar Python untuk data analysis (Pandas, NumPy)</li>
+                                <li>Pahami konsep statistik dasar</li>
+                                <li>Explore dataset sederhana dari Kaggle</li>
+                            </ul>
+                        </div>
+
+                        <div class="interview-step">
+                            <h3>Minggu 3-8: Skill Building Phase</h3>
+                            <ul class="tips-list">
+                                <li>Pelajari SQL untuk data querying</li>
+                                <li>Install Tableau Public dan buat visualisasi pertama</li>
+                                <li>Complete 1-2 online courses dasar data science</li>
+                                <li>Build 2-3 simple data analysis projects</li>
+                            </ul>
+                        </div>
+
+                        <div class="interview-step">
+                            <h3>Bulan 3-6: Portfolio Phase</h3>
+                            <ul class="tips-list">
+                                <li>Bangun 3-5 project portfolio yang impressive</li>
+                                <li>Pelajari machine learning dasar dengan Scikit-learn</li>
+                                <li>Ikut 1-2 kompetisi Kaggle beginner-friendly</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="main-cta-container">
+                            <a href="https://www.kaggle.com/learn" class="main-cta">🚀 Mulai Belajar di Kaggle Learn</a>
+                            <a href="https://www.coursera.org/professional-certificates/google-data-analytics" class="main-cta secondary">📚 Google Data Analytics Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <a href="pekerjaan-unik-list.html" class="nav-btn">← Kembali ke Daftar Pekerjaan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 KarirKita! - Panduan Karir Data Science Lengkap</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu only
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
