@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pekerjaan Unik - KarirKita!</title>
+    <style>
+        :root {
+            --dark-blue: #1D2A62;
+            --light-yellow: #F5F38D;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #1D2A62;
+            --text-light: #F9F9F9;
+            --shadow: 0 4px 12px rgba(29, 42, 98, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-blue);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--light-yellow);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-yellow);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--light-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+            background-color: rgba(245, 243, 141, 0.1);
+        }
+        
+        /* Page Styles */
+        .page {
+            padding: 40px 0;
+            min-height: 100vh;
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-yellow);
+        }
+        
+        .page-subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--dark-blue);
+            opacity: 0.8;
+        }
+        
+        /* Jobs Grid Styles - NEW */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .job-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--dark-blue);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(29, 42, 98, 0.15);
+        }
+        
+        .job-card.coming-soon {
+            opacity: 0.8;
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .job-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            padding-right: 80px; /* Space for the badge */
+        }
+        
+        .job-description {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            flex-grow: 1;
+        }
+        
+        .job-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .job-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .job-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--light-yellow);
+            font-weight: bold;
+            background-color: var(--dark-blue);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .job-salary {
+            background-color: rgba(29, 42, 98, 0.05);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        /* CTA Buttons */
+        .cta-btn {
+            background-color: var(--light-yellow);
+            color: var(--dark-blue);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+            width: 100%;
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(245, 243, 141, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-btn.coming-soon {
+            background-color: #e0e0e0;
+            color: #888;
+            cursor: not-allowed;
+        }
+        
+        .cta-btn.coming-soon:hover {
+            transform: none;
+            box-shadow: var(--shadow);
+            background-color: #e0e0e0;
+        }
+        
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .nav-btn {
+            background-color: var(--dark-blue);
+            color: var(--light-yellow);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(29, 42, 98, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            padding: 25px 0;
+            text-align: center;
+            color: var(--light-yellow);
+            margin-top: 40px;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header-content {
+                position: relative;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                display: none;
+                padding: 15px 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+            
+            .page {
+                padding: 30px 0;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 16px;
+            }
+            
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .job-card {
+                padding: 20px;
+            }
+            
+            .job-title {
+                font-size: 20px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            .jobs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">KarirKita!</div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="nav">
+                    <ul>
+                        <a href="index.html" class="nav-btn">Beranda</a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page active">
+            <div class="container">
+                <h1 class="page-title">🌟 Pekerjaan Unik & Menjanjikan</h1>
+                <p class="page-subtitle">Temukan karir dengan prospek cerah yang mungkin belum pernah kamu pertimbangkan</p>
+
+                <div class="jobs-grid">
+                    <!-- SAP Specialist -->
+                    <div class="job-card">
+                        <h3 class="job-title">SAP Specialist</h3>
+                        <p class="job-description">Konsultan ERP untuk perusahaan besar dengan gaji tinggi dan peluang global.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 8-12 juta</li>
+                            <li>80% perusahaan Fortune 500 pakai SAP</li>
+                            <li>Peluang kerja di berbagai negara</li>
+                            <li>Stabil - SAP established 50+ tahun</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 15-30 juta/bulan
+                        </div>
+                        
+                        <a href="sap-career-guide.html" class="cta-btn">Pelajari Karir SAP</a>
+                    </div>
+
+                    <!-- AI Engineer -->
+                    <div class="job-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <h3 class="job-title">AI Engineer</h3>
+                        <p class="job-description">Bangun karir di bidang Artificial Intelligence yang sedang booming.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 10-15 juta</li>
+                            <li>Demand meningkat 300% dalam 2 tahun</li>
+                            <li>Bekerja dengan teknologi terkini</li>
+                            <li>Startup hingga perusahaan besar</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 20-40 juta/bulan
+                        </div>
+                        
+                        <button class="cta-btn coming-soon">Coming Soon</button>
+                    </div>
+
+                    <!-- Cyber Security -->
+                    <div class="job-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <h3 class="job-title">Cyber Security Expert</h3>
+                        <p class="job-description">Jadi ahli keamanan siber yang sangat dibutuhkan semua perusahaan.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 9-14 juta</li>
+                            <li>Krisis talent di seluruh dunia</li>
+                            <li>Bisa kerja remote dari mana saja</li>
+                            <li>Jenjang karir yang jelas</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 18-35 juta/bulan
+                        </div>
+                        
+                        <button class="cta-btn coming-soon">Coming Soon</button>
+                    </div>
+
+                    <!-- Data Scientist -->
+                    <div class="job-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <h3 class="job-title">Data Scientist</h3>
+                        <p class="job-description">Ubah data menjadi insight berharga untuk pengambilan keputusan bisnis.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 11-16 juta</li>
+                            <li>Dibutuhkan di semua industri</li>
+                            <li>Skill yang future-proof</li>
+                            <li>Banyak peluang freelance</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 22-45 juta/bulan
+                        </div>
+                        
+                        <button class="cta-btn coming-soon">Coming Soon</button>
+                    </div>
+
+                    <!-- Cloud Architect -->
+                    <div class="job-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <h3 class="job-title">Cloud Architect</h3>
+                        <p class="job-description">Desain dan kelola infrastruktur cloud untuk perusahaan modern.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 12-18 juta</li>
+                            <li>Market cloud tumbuh 20% per tahun</li>
+                            <li>Sertifikasi dari AWS, Azure, GCP</li>
+                            <li>Bisa konsultan independen</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 25-50 juta/bulan
+                        </div>
+                        
+                        <button class="cta-btn coming-soon">Coming Soon</button>
+                    </div>
+
+                    <!-- UX Researcher -->
+                    <div class="job-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <h3 class="job-title">UX Researcher</h3>
+                        <p class="job-description">Pelajari perilaku user untuk menciptakan produk yang user-friendly.</p>
+                        
+                        <ul class="job-features">
+                            <li>Gaji fresh graduate: Rp 8-13 juta</li>
+                            <li>Kombinasi psikologi dan teknologi</li>
+                            <li>Bekerja dengan berbagai industri</li>
+                            <li>Creative dan analytical</li>
+                        </ul>
+                        
+                        <div class="job-salary">
+                            💰 Gaji Mid-level: Rp 15-30 juta/bulan
+                        </div>
+                        
+                        <button class="cta-btn coming-soon">Coming Soon</button>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <a href="index.html" class="nav-btn">← Kembali ke Beranda</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 KarirKita! - Explore Pekerjaan Unik & Menjanjikan</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu only
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
