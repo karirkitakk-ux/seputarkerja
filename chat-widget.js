@@ -1,7 +1,7 @@
 class ChatWidget {
     constructor() {
         this.isOpen = false;
-        this.apiKey = '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';
+        this.apiKey = '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';
         this.model = 'deepseek/deepseek-r1-0528-qwen3-8b:free';
         this.chatHistory = this.loadChatHistory();
         this.init();
@@ -255,4 +255,5 @@ document.addEventListener('DOMContentLoaded', () => {
 function clearChatHistory() {
     localStorage.removeItem('karirkita_chat_history');
     location.reload();
+
 }
