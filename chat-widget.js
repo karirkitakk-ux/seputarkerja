@@ -1,8 +1,6 @@
 class ChatWidget {
     constructor() {
         this.isOpen = false;
-        this.apiKey = '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';
-        this.model = 'deepseek/deepseek-r1-0528-qwen3-8b:free';
         this.chatHistory = this.loadChatHistory();
         this.init();
     }
@@ -64,11 +62,6 @@ class ChatWidget {
             return `
                 <div class="message bot">
                     Halo! Saya AI Career Assistant KarirKita! 👋<br><br>
-                    Saya siap membantu Anda dengan:<br>
-                    • Tips CV ATS-friendly<br>
-                    • Persiapan interview<br>
-                    • Nasihat karir<br>
-                    • Pertanyaan seputar pekerjaan<br><br>
                     Ada yang bisa saya bantu?
                 </div>
             `;
@@ -181,48 +174,67 @@ class ChatWidget {
     }
 
     async getAIResponse(userMessage) {
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
+    const API_KEY = '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';
+    
+    console.log('🔍 DEBUG: Starting API request...');
+    console.log('🔍 DEBUG: User message:', userMessage);
+    console.log('🔍 DEBUG: Message length:', userMessage.length);
+    
+    try {
+        const fetchData = fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.apiKey}`,
-                'HTTP-Referer': window.location.origin,
-                'X-Title': 'KarirKita Career Assistant'
+                "Authorization": `Bearer ${API_KEY}`,
+                "HTTP-Referer": window.location.origin,
+                "X-Title": "KarirKita Career Assistant",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: this.model,
-                messages: [
+                "model": "deepseek/deepseek-r1-distill-llama-70b:free",
+                "messages": [
                     {
-                        role: "system",
-                        content: `Anda adalah asisten karir yang membantu pengguna dengan pertanyaan seputar:
-                        - Pembuatan CV yang ramah ATS
-                        - Persiapan wawancara kerja
-                        - Tips karir dan pengembangan profesional
-                        - Pekerjaan unik dan peluang karir
-                        - Informasi tentang berbagai profesi
-                        Berikan jawaban yang informatif, praktis, dan mudah dipahami. Gunakan bahasa Indonesia yang baik dan ramah.`
-                    },
-                    ...this.chatHistory.slice(-10).map(msg => ({
-                        role: msg.sender === 'user' ? 'user' : 'assistant',
-                        content: msg.text
-                    })),
-                    {
-                        role: "user",
-                        content: userMessage
+                        "role": "user",
+                        "content": userMessage
                     }
                 ],
-                max_tokens: 1000,
-                temperature: 0.7
+                "max_tokens": 600, // Ganti dari 10 ke 300
+                "temperature": 0.7
             })
         });
 
+        console.log('🔍 DEBUG: Fetch request sent, waiting for response...');
+
+        const response = await fetchData;
+        
+        console.log('🔍 DEBUG: Response status:', response.status);
+        console.log('🔍 DEBUG: Response ok:', response.ok);
+        console.log('🔍 DEBUG: Response headers:', response.headers);
+        
         if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ DEBUG: API Error response:', errorText);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        return data.choices[0].message.content;
+        console.log('✅ DEBUG: API Success response:', data);
+        
+        if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+            console.error('❌ DEBUG: Invalid response format:', data);
+            throw new Error('Invalid response format from API');
+        }
+        
+        const aiResponse = data.choices[0].message.content;
+        console.log('✅ DEBUG: AI Response:', aiResponse);
+        console.log('✅ DEBUG: Response length:', aiResponse.length);
+        
+        return aiResponse;
+        
+    } catch (error) {
+        console.error('💥 DEBUG: Catch block error:', error);
+        throw error;
     }
+}
 
     addMessage(text, sender) {
         const messageDiv = document.createElement('div');
@@ -251,9 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
     new ChatWidget();
 });
 
-// Clear chat history function (optional, bisa dipanggil dari console)
+// Clear chat history function
 function clearChatHistory() {
     localStorage.removeItem('karirkita_chat_history');
     location.reload();
-
 }
